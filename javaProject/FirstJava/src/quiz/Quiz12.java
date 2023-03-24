@@ -11,21 +11,24 @@ public class Quiz12 {
 		int sum=0;
 		int i = 1;
 
+
 		while(true) {
-			if(i%2==1 || (i%3==0 && i%2==0) ) {
+			if(i%2==1 || (i%3==0 && i%2==0)) {
 				sum+=i;
-				i++;
 			}
-			if(sum<=1000) break;
+			if(sum>1000) {
+				System.out.println(i);
+				System.out.println(sum);
+				break;
+			}
+			i++;
 		}
-		System.out.println(i);
-		System.out.println(sum);
 
 
 
 
 
-//			for(i=1; sum<=1000; i++) {
+//			for(i=1; sum<1000; i++) {
 //				if(i%2==1 || (i%3==0 && i%2==0) ) {
 //					sum+=i;
 //				}

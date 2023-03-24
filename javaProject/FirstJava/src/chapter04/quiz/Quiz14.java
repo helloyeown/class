@@ -1,4 +1,4 @@
-package quiz;
+package chapter04.quiz;
 
 public class Quiz14 {
 
@@ -10,22 +10,18 @@ public class Quiz14 {
 		//	   ------
 		//	    9 9
 
+		//		(10A+B) + (10B+A) = 99
+		//				11A+11B = 99 -> A+B=9 -> B=9-A
 
-		int a=0;
-		int b=0;
 
-		for(a=0; a<10; a++) {
-			for(b=0; b<10; b++) {
-				if(a+b==9) {
-					System.out.println(a+" "+b);
-				}
-			}
+
+		for(int i=0; i<10; i++) {
+			int a = i;
+			int b = 9-a;
+
+			System.out.println("A: " + a + ", B: " + b);
+
 		}
-
-
-
-
-
 
 	}
 }
