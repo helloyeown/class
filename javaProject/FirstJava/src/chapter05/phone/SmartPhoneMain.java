@@ -24,5 +24,13 @@ public class SmartPhoneMain {
 		System.out.println(sp3.size);
 		System.out.println(sp3.volume);
 		
+		Member member = new Member("KING", "king@gamil", 20, "01000000000", sp2);
+		
+		printInfo(member);
 	}
+	
+	static void printInfo(Member member) {
+		member.showData();
+	}
+	
 }
