@@ -6,7 +6,7 @@ public class MemberMain {
 	
 	public static void main(String[] args) {
 
-		Date now = new Date();
+//		Date now = new Date();
 		
 		SmartPhone smartPhone = new SmartPhone();
 		
