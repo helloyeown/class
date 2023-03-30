@@ -7,6 +7,8 @@ public class Ex8_06 {
 		try {
 			Exception e = new Exception("고의로 발생시켰음");
 			throw e;
+		} catch (Exception e) {
+			
 		}
 		
 	}
