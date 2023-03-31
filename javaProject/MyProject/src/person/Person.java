@@ -7,39 +7,33 @@ public class Person {
 //	- “안녕하세요. 저는 OOO입니다. 00살 입니다.”라는 문자열이 출력하도록 정의합시다
 	
 	private String name;
-//	private String id;
-	private int age;
+	private String id;
 	
 	
-	public Person(String name, int age) {
+	public Person(String name, String id) {
 		super();
 		this.name = name;
-		this.age = age;
+		this.id = id;
 	}
 
-	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	
 	public int getAge() {
+		int age = 0;
+		
+		String year = id.substring(0, 2);
+		char gender = id.charAt(7);
+		
+		if(gender < '3') {
+			age = 2023 - (1900 + Integer.parseInt(year)) + 1;
+		} else {
+			age = 2023 - 2000 - Integer.parseInt(year) + 1;
+		}
+		
 		return age;
 	}
-
-
-	public void setAge(int age) {
-		this.age = age;
-	}
 	
 
-
 	public void sayHi() {
-		System.out.println("안녕하세요. 저는 " + name + "입니다. " + age + "살입니다.");
+		System.out.println("안녕하세요. 저는 " + name + "입니다. " + getAge() + "살입니다.");
 	}
 	
 }

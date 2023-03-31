@@ -6,8 +6,8 @@ public class Female extends Person {
 
 
 
-	public Female(String name, int age, String address) {
-		super(name, age);
+	public Female(String name, String id, String address) {
+		super(name, id);
 		this.address = address;
 	}
 

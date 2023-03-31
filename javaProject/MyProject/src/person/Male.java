@@ -8,8 +8,8 @@ public class Male extends Person {
 	
 	String email;
 
-	public Male(String name, int age, String email) {
-		super(name, age);
+	public Male(String name, String id, String email) {
+		super(name, id);
 		this.email = email;
 	}
 
