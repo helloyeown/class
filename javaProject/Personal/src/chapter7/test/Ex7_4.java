@@ -10,10 +10,14 @@ class MyTv{
 	final int MAX_CHANNEL = 100;
 	final int MIN_CHANNEL = 1;
 	
-	int setChannel(int channel) {
+	void setChannel(int channel) {
 		if(channel>MAX_CHANNEL || MIN_CHANNEL<channel)
 			return;
-		return channel;
+		this.channel = channel;
+	}
+	
+	void getChannel() {
+		
 	}
 	
 	
