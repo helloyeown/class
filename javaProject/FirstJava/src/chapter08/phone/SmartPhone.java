@@ -3,6 +3,8 @@ package chapter08.phone;
 public class SmartPhone implements Phone {
 	
 	boolean power;	// 초기값: false
+	
+	public SmartPhone(){}
 
 	@Override
 	public void call() {
