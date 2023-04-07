@@ -67,18 +67,39 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 		System.out.printf("[%s] %s(%d), %d\n", this.team, this.name, this.number, this.age);
 	}
 	
+	
+	
+	
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(name, team, age);
+//		// 식별할 값만 넣기
+//	}
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if(!(obj instanceof FootballPlayer && obj!=null)) return false;
+//		FootballPlayer p = (FootballPlayer)obj;
+//		return name.equals(p.name) && team.equals(p.team) && age==p.age;
+//	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, team, age);
-		// 식별할 값만 넣기
+		// TODO Auto-generated method stub
+		return this.age;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if(!(obj instanceof FootballPlayer && obj!=null)) return false;
-		FootballPlayer p = (FootballPlayer)obj;
-		return name.equals(p.name) && team.equals(p.team) && age==p.age;
+		boolean result = false;
+		
+		if(obj!=null && obj instanceof FootballPlayer) {
+			FootballPlayer p = (FootballPlayer)obj;
+			result = this.team.equals(p.getTeam()) && this.name.equals(p.getName()) && this.age==p.getAge();
+		}
+		return result;
 	}
+	
 
 	@Override
 	public int compareTo(FootballPlayer o) {
