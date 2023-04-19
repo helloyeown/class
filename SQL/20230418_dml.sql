@@ -173,7 +173,7 @@ increment by 10;
 select seq_dept_deptno.nextval
 from dual;
 
-select * from dept01;
+select * from dept01 order by deptno;
 insert into dept01 values(seq_dept_deptno.nextval, 'test이름', 'test위치');
 
 -- 현재값 호출 : 시퀀이름.currval

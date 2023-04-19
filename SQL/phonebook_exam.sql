@@ -1,6 +1,13 @@
 
 
 -- 전화번호 저장 테이블
+drop table phoneinfo_basic;
+drop table phoneinfo_univ;
+drop table phoneinfo_com;
+
+-- sequence 생성
+create sequence seq_pbasic_idx;
+
 create table phoneinfo_basic (
     idx number(6) CONSTRAINT PK_BASIC_IDX primary key not null,
     fr_name varchar2(20) not null,
@@ -18,17 +25,24 @@ create table phoneinfo_univ (
         references PHONEINFO_BASIC(idx)
 );
 
+-- 시퀀스 생성 
+create sequence seq_puniv_idx;
+
 create table phoneinfo_com(
     idx number(6) constraint PK_COM_IDX PRIMARY KEY,
     fr_c_company varchar2(20) default 'N',
     fr_ref number(6) not null references phoneinfo_basic(idx)
 );
 
+-- sequence 생성
+create sequence seq_pcom_idx;
 
 
 --1. phoneInfo_basic 테이블의 SELECT, UPDATE, DELETE, INSERT 하는 SQL
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber)
-values (1, 'YEWON', '01000001234');
+values (seq_pbasic_idx.nextval, 'YEWON', '01000001234');
+insert into phoneinfo_basic (idx, fr_name, fr_phonenumber)
+values (seq_pbasic_idx.nextval, 'YEWON', '01000001234');
 
 select * from phoneinfo_basic;
 
@@ -38,7 +52,8 @@ delete from phoneinfo_basic where idx=1;
 
 
 --2. phoneinfo_univ 테이블의 SELECT, UPDATE, DELETE, INSERT 하는 SQL
-insert into phoneinfo_univ values(1, null, null, 1);
+insert into phoneinfo_univ values(seq_pbasic_idx.nextval, null, null, 1);
+insert into phoneinfo_univ values(seq_puniv_idx.nextval, null, null, seq_pbasic_idx.currval);
 
 select * from phoneinfo_univ;
 
