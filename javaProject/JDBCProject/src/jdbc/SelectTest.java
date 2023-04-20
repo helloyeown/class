@@ -42,7 +42,7 @@ public static void main(String[] args) {
 			
 		
 		} catch (SQLException e) {
-			System.out.println("연결 실패");
+			System.out.println("연결 실패"); 
 			e.printStackTrace();
 		} 
 		

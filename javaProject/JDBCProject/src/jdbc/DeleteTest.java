@@ -24,7 +24,7 @@ public class DeleteTest {
 				String sql = "delete from dept where deptno=?";
 				pstmt = conn.prepareStatement(sql);
 				// 첫 번째 물음표의 데이터(deptno)가 50인 값 삭제
-				pstmt.setInt(1, 50);
+				pstmt.setInt(1, 90);
 				
 				int result = pstmt.executeUpdate();
 

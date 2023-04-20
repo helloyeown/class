@@ -15,13 +15,13 @@ public class ConnectionTest {
          // 2. Conection 객체를 생성 : 연결 정보
          // jdbcUrl
          
-         //ofacle연결
-         //String dbUrl = "jdbc:oracle:thin:@localhost:1522:xe";
-         //Connection conn = DriverManager.getConnection(dbUrl, "hr", "tiger");
+         //oracle연결
+         String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+         Connection conn = DriverManager.getConnection(dbUrl, "hr", "tiger");
       
          // Mysql 연결
-         String dburl = "jdbc:mysql://localhost:3306/project";
-         Connection conn = DriverManager.getConnection(dburl, "himedia", "admin");
+//         String dburl = "jdbc:mysql://localhost:3306/project";
+//         Connection conn = DriverManager.getConnection(dburl, "himedia", "admin");
          
          // 3. Statement / PreparedStatement => sql 실행 요청
          
@@ -30,7 +30,7 @@ public class ConnectionTest {
          // 5. resultset 객체에서 데이터 추출
          
          if(conn != null) {
-            System.out.println("데이터베이스 연결!!!");
+            System.out.println("데이터베이스 연결");
             conn.close(); // 자원의 반납
          }
          
