@@ -14,8 +14,13 @@ public class DeptListService {
 	// DAO의 기능이 필요해서 객체 생성
 	DeptDao dao;
 	
-	public DeptListService(DeptDao dao) {
-		this.dao = dao;
+	private DeptListService() {
+		this.dao = DeptDao.getInstance();
+	}
+	
+	private static DeptListService service = new DeptListService();
+	public static DeptListService getInstance() {
+		return service;
 	}
 
 	public List<Dept> getDeptList(){
@@ -50,6 +55,13 @@ public class DeptListService {
 					conn.rollback();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
+				} finally {
+					if(conn!=null)
+						try {
+							conn.close();
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
 				}
 			}
 			e.printStackTrace();
@@ -62,7 +74,7 @@ public class DeptListService {
 	
 	public static void main(String[] args) {
 		
-		DeptListService listService = new DeptListService(new DeptDao());
+		DeptListService listService = new DeptListService();
 		
 		List<Dept> list = listService.getDeptList();
 		

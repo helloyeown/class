@@ -12,5 +12,4 @@ public class ConnectionProvider {
 		return DriverManager.getConnection(dbUrl, "hr", "tiger");
 		
 	}
-	
 }

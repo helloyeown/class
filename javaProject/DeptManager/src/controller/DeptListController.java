@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import dao.DeptDao;
 import domain.Dept;
 import service.DeptListService;
 
-public class DeptListController {
+public class DeptListController implements Controller {
 	
 	// 컨트롤러 클래스 :
 	// 사용자의 요청을 처리할 Service를 결정하고 요청
@@ -14,12 +14,18 @@ public class DeptListController {
 	
 	DeptListService listService;
 	
-	public DeptListController() {
-		this.listService = new DeptListService(new DeptDao());
+	private DeptListController() {
+		this.listService = DeptListService.getInstance();
+	}
+	
+	private static DeptListController controller = new DeptListController();
+	
+	public static DeptListController getInstance() {
+		return controller;
 	}
 
 
-	public void getDeptList() {
+	public void process() {
 		// 사용자의 요청을 분석
 		// 요청을 처리할 서비스를 이용해서 결과 데이터 받음
 		List<Dept> result = listService.getDeptList();
@@ -43,7 +49,7 @@ public class DeptListController {
 	public static void main(String[] args) {
 		
 		DeptListController listController = new DeptListController();
-		listController.getDeptList();
+		listController.process();
 		
 	}
 }
