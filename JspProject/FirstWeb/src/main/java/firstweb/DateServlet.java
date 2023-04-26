@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DateServlet
  */
-@WebServlet({ "/now", "/test/now" })
+//@WebServlet({ "/now", "/test/now" })
 public class DateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
