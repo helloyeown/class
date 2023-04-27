@@ -14,7 +14,7 @@
 		절대경로(서버 루트 경로 기준): "/web/auth/login.jsp"
 		상대경로(현재 파일 기준): "login.jsp"
 	 -->
-	<form action="login" method="post">
+	<form action="login.jsp" method="post">
 		<table>
 			<tr>
 				<td>아이디</td>
