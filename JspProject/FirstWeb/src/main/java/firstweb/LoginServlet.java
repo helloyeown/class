@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.User;
+
 
 @WebServlet("/auth/login")
 public class LoginServlet extends HttpServlet {
@@ -23,6 +25,11 @@ public class LoginServlet extends HttpServlet {
 			
 			String password = request.getParameter("password");
 			System.out.println("사용자 입력 pw: " + password);
+			
+			
+//			User user = new User();
+//			
+//			user.service(); -> 
 			
 			////////////////////////////////
 			// 응답 처리
@@ -51,7 +58,6 @@ public class LoginServlet extends HttpServlet {
 		out.println("id: " + userid);
 		out.println("pw: " + password);
 		out.close();
-		
 		
 	}
 
