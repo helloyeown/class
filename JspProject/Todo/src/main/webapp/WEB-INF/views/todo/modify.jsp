@@ -12,10 +12,10 @@
 
 <form method="post">
 
-	번호 : <input type="text" name="no" value="${todo.no}" readonly> <br>
+	번호 : <input type="text" name="no" value="${todo.tno}" readonly> <br>
 	할일 : <input type="text" name="todo" value="${todo.todo}"> <br>
 	날짜 : <input type="date" name="duedate" value="${todo.duedate}"> <br>
-	완료 : <input type="checkbox" name="complete" ${todo.complete=='done' ? 'checked' : ''}> <br>
+	완료 : <input type="checkbox" name="complete" ${todo.finished ? 'checked' : ''}> <br>
 	<!-- checkbox value => "on" -->
 	<input type="reset"> <input type="submit" value="수정">
 	

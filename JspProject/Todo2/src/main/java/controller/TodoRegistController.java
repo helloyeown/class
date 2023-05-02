@@ -1,4 +1,4 @@
-package todo.controller;
+package controller;
 
 import java.io.IOException;
 
@@ -9,56 +9,48 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.TodoInsertService;
 import todo.domain.RequestTodo;
-import todo.service.TodoInsertService;
-
 
 @WebServlet("/todo/register")
-public class TodoRegisterController extends HttpServlet {
-	
+public class TodoRegistController extends HttpServlet {
+
 	TodoInsertService insertService;
 	
-	public TodoRegisterController() {
+	public TodoRegistController(TodoInsertService insertService) {
 		this.insertService = TodoInsertService.getInstance();
 	}
 	
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// todo 입력 폼 화면 출력
-		System.out.println("TodoRegisterController... doGet()...");
+		System.out.println("TodoRegistController... doGet()...");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/todo/registerForm.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/registerForm.jsp");
 		dispatcher.forward(request, response);
 		
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("TodoRegisterController... doPost()...");
+		System.out.println("TodoRegistController... doPost()...");
 		
-		// post 방식의 데이터 전달 -> 파라미터 한글 처리
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("uft-8");
 		
-		// 입력 폼에서 전달한 데이터를 받아서 처리(redirect)
 		String todo = request.getParameter("todo");
-		String dueDate = request.getParameter("duedate");
-//		System.out.println(todo + " : " + dueDate);
+		String duedate = request.getParameter("duedate");
+		RequestTodo requestTodo = new RequestTodo(todo, duedate);
+		// 폼에서 파라미터 가져와서 객체 생성
 		
-		RequestTodo requestTodo = new RequestTodo(todo, dueDate);
-		
-		// service에 요청
 		int result = insertService.register(requestTodo);
 		
-		if(result > 0) {
+		if(result>0) {
 			System.out.println("입력 성공...");
 		} else {
 			System.out.println("입력 실패...");
 		}
 		
-		// redirect : "list"
-		response.sendRedirect("list");	// 외부에서 접속하는 URI
+		response.sendRedirect("list");
 		
 	}
+
 }

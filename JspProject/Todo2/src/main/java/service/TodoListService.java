@@ -1,12 +1,12 @@
-package todo.service;
+package service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 import todo.dao.TodoDAO;
-import todo.domain.TodoDTO;
-import todo.util.ConnectionProvider;
+import todo.domain.Todo;
+import util.ConnectionProvider;
 
 public class TodoListService {
 
@@ -15,20 +15,17 @@ public class TodoListService {
 	private TodoListService() {
 		this.dao = TodoDAO.getInstance();
 	}
-	
+
 	private static TodoListService service = new TodoListService();
-	
+
 	public static TodoListService getInstance() {
 		return service;
 	}
 
-	public List<TodoDTO> getList(){
-
-		// 데이터 처리
-		// 트랜잭션 처리
+	public List<Todo> getList(){
 
 		Connection conn = null;
-		List<TodoDTO> list = null;
+		List<Todo> list = null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -45,9 +42,6 @@ public class TodoListService {
 					e.printStackTrace();
 				}
 		}
-
 		return list;
-
 	}
-
 }

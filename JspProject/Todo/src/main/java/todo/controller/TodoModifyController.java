@@ -9,11 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import todo.domain.Todo;
+import todo.domain.TodoDTO;
+import todo.service.TodoUpdateService;
+import todo.service.TodoViewService;
 
 
 @WebServlet("/todo/modify")
 public class TodoModifyController extends HttpServlet {
+	
+	TodoViewService viewService;
+	TodoUpdateService updateService;
+	
+	public TodoModifyController() {
+		this.viewService = TodoViewService.getInstance();
+		this.updateService = TodoUpdateService.getInstance();
+	}
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -23,7 +34,8 @@ public class TodoModifyController extends HttpServlet {
 		int no = Integer.parseInt(noStr);
 		
 		// no 값에 해당하는 Todo 데이터를 서비스를 통해 받음
-		Todo todo = new Todo(no, "청소", "2023-05-04", "not");
+//		Todo todo = new Todo(no, "청소", "2023-05-04", "not");
+		TodoDTO todo = viewService.getTodo(no);
 		
 		// request 속성에 결과 데이터 저장
 		request.setAttribute("todo", todo);
@@ -47,15 +59,24 @@ public class TodoModifyController extends HttpServlet {
 		String duedate = request.getParameter("duedate");
 		String complete = request.getParameter("complete");
 		
-		Todo newTodo = new Todo(Integer.parseInt(noStr), todo, duedate, 
-				complete != null ? complete.equals("on") ? "done" : "not" : "not");
+		TodoDTO todoDTO = new TodoDTO
+				(Integer.parseInt(noStr), todo, duedate, 
+						complete!=null ? (complete.equals("on") ? true : false) : false);
 		
-		System.out.println(newTodo);
+//		Todo newTodo = new Todo(Integer.parseInt(noStr), todo, duedate, 
+//				complete != null ? complete.equals("on") ? "done" : "not" : "not");
+//		
+//		System.out.println(newTodo);
 	
 		//데이터를 서비스에 요청 : update
 		
 		// 결과 받음
-		int result = 1;
+		int result = updateService.modify(todoDTO);
+		if(result>0) {
+			System.out.println("수정 완료...");
+		} else {
+			System.out.println("수정 실패...");
+		}
 		
 		// redirect 처리 (결과가 다시 요청되지 않도록)
 		response.sendRedirect("list");	// 브라우저가 보는 경로
