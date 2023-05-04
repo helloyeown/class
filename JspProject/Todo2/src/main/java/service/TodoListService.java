@@ -44,4 +44,15 @@ public class TodoListService {
 		}
 		return list;
 	}
+	
+	public static void main(String[] args) {
+		
+		TodoListService service = TodoListService.getInstance();
+		List<Todo> list = service.getList();
+		
+		for(Todo todo : list) {
+			System.out.println(todo);
+		}
+		
+	}
 }

@@ -8,13 +8,15 @@
 </head>
 <body>
 
-<h1>Todo 등록 (${loginInfo.uid})</h1>
+<h1>Login</h1>
+<hr>
 
 <form method="post">
 
-	할일 : <input type="text" name="todo"> <br>
-	날짜 : <input type="date" name="duedate"> <br>
-	<input type="reset"> <input type="submit" value="제출">
+ID : <input type="text" name="uid"><br>
+PW : <input type="password" name="pw"><br>
+<input type="checkbox" name="reid"> ID 기억하기<br>
+<input type="submit" value="로그인">
 
 </form>
 

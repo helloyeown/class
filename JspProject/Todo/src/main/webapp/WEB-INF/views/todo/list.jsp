@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>Todo LIST ( ${loginInfo} )</h1>
+<h1>Todo LIST ( ${loginInfo.uid} [${loginInfo.uname}] )</h1>
 
 <ul>
 	<!-- get 방식 -->

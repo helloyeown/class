@@ -17,9 +17,10 @@ public class TodoRegistController extends HttpServlet {
 
 	TodoInsertService insertService;
 	
-	public TodoRegistController(TodoInsertService insertService) {
+	public TodoRegistController() {
 		this.insertService = TodoInsertService.getInstance();
 	}
+	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -34,7 +35,7 @@ public class TodoRegistController extends HttpServlet {
 		
 		System.out.println("TodoRegistController... doPost()...");
 		
-		request.setCharacterEncoding("uft-8");
+		request.setCharacterEncoding("utf-8");
 		
 		String todo = request.getParameter("todo");
 		String duedate = request.getParameter("duedate");

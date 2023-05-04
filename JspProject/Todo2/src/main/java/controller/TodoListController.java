@@ -13,16 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import service.TodoListService;
 import todo.domain.Todo;
 
-@WebServlet(name="todoListController", urlPatterns = "/todo/list")
+@WebServlet("/todo/list")
 public class TodoListController extends HttpServlet {
 
 	TodoListService listService;
 	
-	private TodoListController() {
+	public TodoListController() {
 		this.listService = TodoListService.getInstance();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("TodoListController... doGet()...");
 		
 		List<Todo> list = listService.getList();
 		
@@ -33,5 +35,4 @@ public class TodoListController extends HttpServlet {
 		dispatcher.forward(request, response);
 		
 	}
-
 }
