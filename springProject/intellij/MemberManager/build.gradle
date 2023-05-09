@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+// 스프링 관련 설정
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // spring-context(spring-beans), spring-test, spring-core
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.3.16'
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.16'
+    testImplementation group: 'org.springframework', name: 'spring-test', version: '5.3.16'
+
+}
+
+test {
+    useJUnitPlatform()
+}

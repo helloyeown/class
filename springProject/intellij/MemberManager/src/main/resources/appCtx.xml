@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--bean: 객체 생성 설명(기본생성자나 생성자 일치해야 함)
+    class: 어떤 클래스의 객체를 생성할지 지정
+    id: 설정 파일 내부에서의 식별자 -->
+    <bean id="memberDao" class="org.example.dao.MemberDao"/>
+
+    <bean id="memberRegisterService"
+          class="org.example.service.MemberRegisterService"
+          scope="singleton">
+        <!--scope 설정하지 않으면 싱글톤이 디폴트-->
+        <!-- <constructor-arg> &lt;!&ndash;생성자 설정&ndash;&gt;
+             <ref bean="memberDao"/>
+         </constructor-arg>-->
+        <property name="dao">
+            <ref bean="memberDao"/>
+        </property>
+    </bean>
+
+    <bean id="changePasswordService"
+          class="org.example.service.ChangePasswordService"
+          scope="prototype">
+        <constructor-arg ref="memberDao"/>
+    </bean>
+
+</beans>

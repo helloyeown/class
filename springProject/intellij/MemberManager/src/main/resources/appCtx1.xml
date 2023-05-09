@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+<!--context를 사용하기 위한 name space-->
+
+    <context:annotation-config></context:annotation-config>
+
+    <!--bean: 객체 생성 설명(기본생성자나 생성자 일치해야 함)
+    class: 어떤 클래스의 객체를 생성할지 지정
+    id: 설정 파일 내부에서의 식별자 -->
+    <bean id="memberDao" class="org.example.dao.MemberDao">
+        <qualifier value="member"/>
+    </bean>
+    <bean id="daoImpl" class="org.example.dao.DaoImpl">
+        <qualifier value="impl"/>
+    </bean>
+
+    <!--Autowired 된 상태-->
+    <bean id="memberRegisterService" class="org.example.service.MemberRegisterService"/>
+    <bean id="changePasswordService" class="org.example.service.ChangePasswordService"/>
+
+</beans>
