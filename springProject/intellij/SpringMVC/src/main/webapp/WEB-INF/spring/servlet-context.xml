@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--어노테이션 실행을 위한 설정-->
+    <!--어노테이션을 이용해 매핑 처리-->
+    <mvc:annotation-driven/>
+
+    <!--정적자원(html, css, js, image) 경로 설정-->
+    <mvc:resources mapping="/resources/**" location="/resources/"></mvc:resources>
+    <!--/app/resources/css/default.css-->
+    <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+    <!--/css/default.css-->
+
+    <!--view에 대한 객체 = bean(jsp 파일) 등록-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!--view 관리 객체-->
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+    <!--/WEB-INF/views/member/loginForm.jsp-->
+    <!--Controller에서 view 지정할 때 prefix, suffix 떼고 -> member/loginForm-->
+
+    <!--bean 자동 등록 설정-->
+    <!--지정된 base-package에서 어노테이션 기반의
+		컴포넌트(@Controller, @Service, @Repository)를 스캔하고 등록-->
+    <context:component-scan base-package="com.hi.app"></context:component-scan>
+
+</beans>
