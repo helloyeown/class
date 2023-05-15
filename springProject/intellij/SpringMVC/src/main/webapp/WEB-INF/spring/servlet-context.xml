@@ -16,6 +16,8 @@
     <!--/app/resources/css/default.css-->
     <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
     <!--/css/default.css-->
+    <!--/uploadfile/report/캡처.PNG-->
+    <mvc:resources mapping="/uploadfile/**" location="/uploadfile/"></mvc:resources>
 
     <!--view에 대한 객체 = bean(jsp 파일) 등록-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!--view 관리 객체-->
@@ -29,5 +31,31 @@
     <!--지정된 base-package에서 어노테이션 기반의
 		컴포넌트(@Controller, @Service, @Repository)를 스캔하고 등록-->
     <context:component-scan base-package="com.hi.app"></context:component-scan>
+
+
+    <!--파일 업로드를 위해 multipartResolver를 반드시 등록-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <!--회원 로그인 여부 체크 interceptor-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/mypage/**"/>
+            <mvc:exclude-mapping path="/mypage/help/**"/>
+            <bean class="com.hi.app.interceptor.AuthCheckInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--formatter 등록 설정-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <bean class="com.hi.app.formatter.LocalDateFormatter"/>
+            </set>
+        </property>
+    </bean>
+
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
 </beans>
