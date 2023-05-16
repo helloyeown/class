@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--interface와 연결되는 mapper xml-->
+<!--namespace 속성 설정 필수 -> mapper interface의 풀네임-->
+<mapper namespace="com.hi.deptspring.deptspring.mapper.DeptMapper">
+
+    <!--id 매퍼 인터페이스와 동일하게-->
+    <select id="selectAll" resultType="com.hi.deptspring.deptspring.domain.DeptDTO">
+        select * from dept
+    </select>
+
+    <select id="selectByDeptno" resultType="com.hi.deptspring.deptspring.domain.DeptDTO">
+        select * from dept where deptno = #{dno}
+    </select>
+
+    <insert id="insertDept" parameterType="com.hi.deptspring.deptspring.domain.DeptRegistRequest">
+        insert into dept (dname, loc) values (#{dname}, #{loc})
+    </insert>
+
+    <update id="updateDept" parameterType="com.hi.deptspring.deptspring.domain.DeptDTO">
+        update dept set dname=#{dname}, loc=#{loc} where deptno=#{deptno}
+    </update>
+
+    <delete id="deleteDept">
+        delete from dept where deptno=#{no}
+    </delete>
+
+</mapper>
