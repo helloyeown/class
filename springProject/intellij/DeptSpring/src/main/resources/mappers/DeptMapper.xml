@@ -6,6 +6,65 @@
 <!--namespace 속성 설정 필수 -> mapper interface의 풀네임-->
 <mapper namespace="com.hi.deptspring.deptspring.mapper.DeptMapper">
 
+    <!--mapping 규칙 정의-->
+    <resultMap id="deptMap" type="com.hi.deptspring.deptspring.domain.DeptDTO">
+        <id column="deptno" property="deptno"/>
+        <result column="dname" property="dname"/>
+        <result column="loc" property="loc"/>
+    </resultMap>
+
+    <select id="selectAll2" resultMap="deptMap">
+        select * from dept
+    </select>
+    
+    <select id="selectByOption" parameterType="com.hi.deptspring.deptspring.domain.DeptSearchOption"
+            resultType="com.hi.deptspring.deptspring.domain.DeptDTO">
+        select * from dept
+
+        <where>
+            <!--searchType null 여부로 검색 sql 작성 여부 판단-->
+            <if test="searchType!=null and keyword!=null">
+                <if test="searchType == 'dname'">
+                    <!--dname like concat('%',#{keyword},'%')-->
+                    <include refid="searchDname"></include>
+                </if>
+                <if test="searchType == 'loc'">
+                    <!--dname like concat('%',#{keyword},'%')-->
+                    <include refid="searchLoc"></include>
+                </if>
+                <if test="searchType=='both'">
+                    <include refid="searchDname"/>
+                    <include refid="searchLoc"/>
+                </if>
+
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByDeptnos" parameterType="list" resultType="com.hi.deptspring.deptspring.domain.DeptDTO">
+        select * from dept
+        <!--delete from dept
+        update dept set dname='개발팀'-->
+        <where>
+            <if test="list!=null and list.size!=0">
+                deptno in
+                <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+
+    <sql id="searchDname">
+        or dname like concat('%',#{keyword},'%')
+    </sql>
+    <sql id="searchLoc">
+        or loc like concat('%',#{keyword},'%')
+    </sql>
+
+
+
     <!--id 매퍼 인터페이스와 동일하게-->
     <select id="selectAll" resultType="com.hi.deptspring.deptspring.domain.DeptDTO">
         select * from dept
@@ -16,6 +75,11 @@
     </select>
 
     <insert id="insertDept" parameterType="com.hi.deptspring.deptspring.domain.DeptRegistRequest">
+        insert into dept (dname, loc) values (#{dname}, #{loc})
+    </insert>
+
+    <insert id="insertDept2" parameterType="com.hi.deptspring.deptspring.domain.DeptDTO"
+    useGeneratedKeys="true" keyProperty="deptno">
         insert into dept (dname, loc) values (#{dname}, #{loc})
     </insert>
 

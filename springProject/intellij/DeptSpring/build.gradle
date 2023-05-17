@@ -64,6 +64,10 @@ dependencies {
     implementation 'org.mybatis:mybatis:3.5.9'
     implementation 'org.mybatis:mybatis-spring:2.0.7'
 
+    // jackson과 데이터 변환
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.0'
+
+
 }
 
 test {
