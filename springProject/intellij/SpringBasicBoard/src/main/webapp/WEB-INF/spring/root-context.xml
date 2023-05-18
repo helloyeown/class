@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+https://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/tx
+ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+ http://mybatis.org/schema/mybatis-spring
+ http://mybatis.org/schema/mybatis-spring.xsd">
+
+
+    <!--핵심로직 처리(model) bean 등록: service/dao 관련 설정-->
+    <context:component-scan base-package="com.hi.board.service"/>
+
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/project"></property>
+        <property name="username" value="himedia"></property>
+        <property name="password" value="tiger"></property>
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="cashPrepStatement">true</prop>
+                <prop key="prepStmtCashSize">250</prop>
+                <prop key="prepStmtCashSqlLimit">2048</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--Connection 제공-->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <constructor-arg ref="hikariConfig"/>
+    </bean>
+
+    <!--mybatis 설정-->
+    <!--mapper 생성-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
+    </bean>
+
+    <mybatis:scan base-package="com.hi.board.mapper"></mybatis:scan>
+
+</beans>

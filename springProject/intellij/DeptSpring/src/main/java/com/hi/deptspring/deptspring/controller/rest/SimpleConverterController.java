@@ -19,7 +19,6 @@ public class SimpleConverterController {
     public String simple(@RequestBody String body){
         log.info("body >>> " + body);
         return "body >>>> ";
-        // @ResponseBody가 없으면
     }
 
 }
