@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hi.app.mapper.EmpMapper">
+
+<select id="selectList" resultType="com.hi.app.domain.EmpDTO">
+    select * from emp
+</select>
+
+    <insert id="insertEmp" parameterType="com.hi.app.domain.RequestRegEmp">
+        insert into emp (ename, job, mgr, hiredate, sal, comm, deptno)
+        values (#{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno});
+    </insert>
+
+    <select id="selectByEmpno" resultType="com.hi.app.domain.EmpDTO">
+        select * from emp where empno=${empno}
+    </select>
+
+</mapper>

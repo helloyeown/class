@@ -14,6 +14,8 @@ public class BoardDTO {
     private String title;
     private String content;
     private String writer;
+    // 업로드한 파일의 이름
+    private String file;
     private String regdate;
     private String updatedate;
 

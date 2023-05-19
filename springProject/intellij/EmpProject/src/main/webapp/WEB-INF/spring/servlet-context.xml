@@ -10,7 +10,7 @@
     <!--두 개는 기본 설정-->
     <!--controller 관련 설정-->
     <mvc:annotation-driven></mvc:annotation-driven>
-    <context:component-scan base-package="com.hi.board.controller"/>
+    <context:component-scan base-package="com.hi.app.controller"/>
 
 
     <!--view 설정-->
@@ -21,7 +21,7 @@
 
     <!--mapping: 사용자가 요청하는 url-->
     <!--location: 내부적으로 처리하는 경로-->
-    <mvc:resources mapping="/uploadfile/**" location="/uploadfile/"/>
+    <!--<mvc:resources mapping="/uploadfile/**" location="/uploadfile/"/>-->
 
     <!--파일 업로드를 위해 multipartResolver를 반드시 등록-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

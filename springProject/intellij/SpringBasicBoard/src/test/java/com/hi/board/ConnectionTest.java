@@ -27,6 +27,15 @@ public class ConnectionTest {
     @Autowired(required = false)
     private BoardMapper boardMapper;
 
+    @Test
+    public void selectByBnoTest(){
+        BoardDTO board = boardMapper.selectByBno(1);
+        log.info("1번 게시물: " + board);
+        board = boardMapper.selectByBno(5);
+        log.info("5번 게시물: " + board);
+    }
+
+
 
     @Test
     public void deptListTest(){

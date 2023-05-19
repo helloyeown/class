@@ -4,13 +4,36 @@
 
 <mapper namespace="com.hi.board.mapper.BoardMapper">
 
+    <select id="selectList" resultType="com.hi.board.domain.BoardDTO">
+        select * from tbl_board order by bno desc limit #{param1}, #{param2}
+    </select>
+
+    <select id="selectTotalCount" resultType="int">
+        select count(*) from tbl_board
+    </select>
+
     <insert id="insertBoard" parameterType="com.hi.board.domain.RequestRegBoard">
-        insert into tbl_board (title, content, writer) values (#{title}, #{content}, #{writer})
+        <!--file: 파일의 이름을 저장하는 문자열-->
+        insert into tbl_board (title, content, writer, file) values (#{title}, #{content}, #{writer}, #{filename})
     </insert>
+
+    <update id="updateBoard" parameterType="com.hi.board.domain.RequestModifyBoard">
+        update tbl_board set title=#{title}, content=#{content}, writer=#{writer}, file=#{filename}, updatedate=now()
+        where bno=#{bno};
+    </update>
 
     <select id="selectAll" resultType="com.hi.board.domain.BoardDTO">
         select * from tbl_board
     </select>
+
+    <select id="selectByBno" resultType="com.hi.board.domain.BoardDTO">
+        select * from tbl_board where bno=#{bno}
+        <!--전달되는 파라미터가 1개여서 변수 이름 상관 x (num도 가능)-->
+    </select>
+
+    <delete id="deleteBoard">
+        delete from tbl_board where bno=#{no}
+    </delete>
 
 
 </mapper>
