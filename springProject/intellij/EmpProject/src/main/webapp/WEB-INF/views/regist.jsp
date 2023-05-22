@@ -15,9 +15,9 @@
 <h1>사원 등록</h1>
 <hr>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 
-<table>
+<table border="1">
     <tr>
         <td>이름</td>
         <td><input type="text" name="ename" required></td>
@@ -45,6 +45,10 @@
     <tr>
         <td>부서</td>
         <td><input type="text" name="deptno"></td>
+    </tr>
+    <tr>
+        <td>첨부파일</td>
+        <td><input type="file" name="file"></td>
     </tr>
     <tr>
         <td></td>

@@ -14,11 +14,14 @@
 
 <h1>게시글 쓰기</h1>
 <hr>
+${loginInfo}
+<hr>
+
 <form method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>작성자</td>
-            <td><input type="text" name="writer" required></td>  <%--ReqeustRegBoard와 이름 일치--%>
+            <td><input type="text" name="writer" required value="${loginInfo.idx}"></td>  <%--ReqeustRegBoard와 이름 일치--%>
         </tr>
         <tr>
             <td>제목</td>

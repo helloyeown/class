@@ -28,5 +28,12 @@
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
+    <!--회원 로그인 여부 체크 interceptor 등록-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/board/**"/>
+            <bean class="com.hi.board.interceptor.AuthCheckInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

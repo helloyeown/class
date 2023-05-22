@@ -4,17 +4,27 @@
 
 <mapper namespace="com.hi.app.mapper.EmpMapper">
 
-<select id="selectList" resultType="com.hi.app.domain.EmpDTO">
-    select * from emp
-</select>
+    <update id="updateEmp" parameterType="com.hi.app.domain.RequestModifyEmp">
+        update emp set ename=#{ename}, job=#{job}, mgr=#{mgr},
+        hiredate=#{hiredate}, sal=#{sal}, comm=#{comm}, deptno=#{deptno}, file=#{filename}
+        where empno=#{empno}
+    </update>
+
+    <select id="selectList" resultType="com.hi.app.domain.EmpDTO">
+        select * from emp
+    </select>
 
     <insert id="insertEmp" parameterType="com.hi.app.domain.RequestRegEmp">
-        insert into emp (ename, job, mgr, hiredate, sal, comm, deptno)
-        values (#{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno});
+        insert into emp (ename, job, mgr, hiredate, sal, comm, deptno, file)
+        values (#{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno}, #{filename});
     </insert>
 
     <select id="selectByEmpno" resultType="com.hi.app.domain.EmpDTO">
         select * from emp where empno=${empno}
     </select>
+
+    <delete id="deleteEmp">
+        delete from emp where empno=#{empno}
+    </delete>
 
 </mapper>

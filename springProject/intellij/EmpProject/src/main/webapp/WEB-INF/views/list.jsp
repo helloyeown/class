@@ -46,10 +46,9 @@
             <td>${emp.deptno}</td>
         </tr>
     </c:forEach>
-
-    <a href="/emp/regist">등록</a>
-
 </table>
+
+<a href="/emp/regist">등록</a>
 
 </body>
 </html>

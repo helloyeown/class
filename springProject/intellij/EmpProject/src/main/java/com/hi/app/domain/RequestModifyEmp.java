@@ -1,19 +1,17 @@
 package com.hi.app.domain;
 
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
-@Builder
-public class EmpDTO {
+public class RequestModifyEmp {
 
-    private int empno;
     private String ename;
     private String job;
     private String mgr;
@@ -21,7 +19,8 @@ public class EmpDTO {
     private int sal;
     private int comm;
     private int deptno;
-    private String file;
-
+    private MultipartFile file;
+    private String filename;
+    private String oldfile;
 
 }

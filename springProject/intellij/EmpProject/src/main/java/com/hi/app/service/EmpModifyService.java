@@ -1,5 +1,7 @@
 package com.hi.app.service;
 
+import com.hi.app.domain.EmpDTO;
+import com.hi.app.domain.RequestModifyEmp;
 import com.hi.app.domain.RequestRegEmp;
 import com.hi.app.mapper.EmpMapper;
 import lombok.extern.log4j.Log4j2;
@@ -13,13 +15,15 @@ import java.util.UUID;
 
 @Service
 @Log4j2
-public class EmpRegistService {
+public class EmpModifyService {
 
     @Autowired
     private EmpMapper mapper;
 
-    public int regist(RequestRegEmp emp,
-                      HttpServletRequest request){
+    public int modifyEmp(RequestModifyEmp emp,
+                         HttpServletRequest request){
+
+        log.info("modifyEmp Service ...");
 
         if (emp.getFile()!=null && emp.getFile().getSize()>0) {
             String uri = "/uploadfile/emp";
@@ -33,10 +37,14 @@ public class EmpRegistService {
             } catch (IOException e) {
 //                throw new RuntimeException(e);
                 log.info("파일 저장 실패...");
+                emp.setFilename(emp.getOldfile());
             }
+
+        } else {
+            emp.setFilename(emp.getOldfile());
         }
 
-        return mapper.insertEmp(emp);
+        return mapper.updateEmp(emp);
     }
 
 }
