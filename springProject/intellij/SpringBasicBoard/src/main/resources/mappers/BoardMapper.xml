@@ -5,7 +5,8 @@
 
     <select id="selectList" parameterType="com.hi.board.domain.PageOption" resultType="com.hi.board.domain.BoardDTO">
 
-        select * from tbl_board
+        select bno, title, content, file, uname as writer, memidx, regdate, updatedate
+        from tbl_board b, member m
 
         <where>
 
@@ -33,6 +34,8 @@
                 </if>
 
             </if>
+
+            and b.memidx=m.idx
 
         </where>
 
@@ -75,7 +78,8 @@
     <select id="selectByBno"
             resultType="com.hi.board.domain.BoardDTO"
     >
-        select * from tbl_board where bno=#{bno}
+        select bno, title, content, file, uname as writer, memidx, regdate, updatedate
+        from tbl_board b, member m where bno=#{bno} and b.memidx=m.idx
     </select>
 
 
@@ -83,9 +87,10 @@
             parameterType="com.hi.board.domain.RequestRegBoard">
 
         <!-- file : 파일의 이름을 저장하는 문자열 -->
-        insert into tbl_board (title, content, writer, file)
+        <!--writer->memidx 변경-->
+        insert into tbl_board (title, content, memidx, file)
 
-        values (#{title}, #{content}, #{writer}, #{filename})
+        values (#{title}, #{content}, #{memidx}, #{filename})
 
     </insert>
 
@@ -97,7 +102,6 @@
 
         set title=#{title},
         content=#{content},
-        writer=#{writer},
         file=#{filename},
         updatedate=now()
 
