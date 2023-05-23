@@ -16,7 +16,9 @@
 <h1>사원 정보 수정</h1>
 <hr>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
+
+  <input type="hidden" name="empno" value="${emp.empno}">
 
   <table border="1">
     <tr>

@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 @ToString
 public class RequestModifyEmp {
 
+    private int empno;
     private String ename;
     private String job;
     private String mgr;
