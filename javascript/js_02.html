@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+
+        // 조건문: if, if~else, if~else if
+        // 조건문 중첩 가능
+
+        // 현재 시간에 따라 오전/오후 구분해서 콘솔에 출력
+        const now = new Date();
+
+        let hour = now.getHours();
+
+        //if
+        // if(hour>11){
+        //     console.log('오후입니다.')
+        // }
+
+        // if(hour<12){
+        //     console.log('오전입니다.')
+        // }
+
+        //if~else
+        if(hour>11){
+            console.log('오후입니다.')
+        } else {
+            console.log('오전입니다.')
+        }
+
+
+        /////////////////////////////////////////////////
+        
+    
+        // 사용자로부터 숫자를 입력 받아 하이로우 게임 만들기
+        // 난수 생성: 1~10
+        const r1 = Math.random();
+        const num = Math.floor(r1*10+1);
+        console.log('난수', num);
+
+        
+        for(let i=0; i<0; i++){
+        // i는 for 블록 안에서 정의된 변수
+        
+        // 사용자에게 숫자 입력 받기
+        let userNum = prompt('숫자를 입력해주세요.');
+        console.log('사용자 입력 숫자', userNum, typeof(userNum));
+        
+        const uNum = Number(userNum);
+        console.log('사용자 입력 숫자', uNum, typeof(uNum));
+
+        if(!uNum){  // uNum => NaN => false
+            console.log('숫자 형식이 아닙니다.')
+        }
+
+        if(uNum>num){
+            console.log('낮은 숫자입니다.')
+        } else if(uNum<num){
+            console.log('큰 숫자입니다.')
+        } else {
+            console.log('정답입니다.')
+            break;
+        }
+    }
+    
+
+        
+    // 짝수 홀수 판별
+    let num2 = prompt('숫자를 입력하세요.');
+    
+    // switch (num2%2) {   // num2: string -> number
+    //     case 0:
+    //     console.log('짝수')
+    //             break;
+    
+    //     case 1:
+    //     console.log('홀수')
+    //     break;
+    // }
+
+
+    console.log(num2%2==0 ? '짝수' : '홀수');
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

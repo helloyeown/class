@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        const fn1 = function(){     // 익명함수
+            console.log('fn1() 함수 실행');
+            console.log('fn1() 함수 실행');
+            console.log('fn1() 함수 실행');
+        };
+
+        fn1();  // 함수 호출
+        console.log(typeof(fn1));
+
+        function fn2(){
+            console.log('fn2 함수 실행');
+            console.log('fn2 함수 실행');
+            console.log('fn2 함수 실행');
+        }
+
+        // 함수 호출
+        fn2();
+
+
+        function fn3(num1, num2, num3){
+            return num1+num2+num3;
+        }
+
+        console.log(fn3(10,20,30));
+
+
+        function fn4(...items){
+            // 배열 생성 -> 매개변수 인자를 ,로 구분해서 각 데이터를 배열에 저장
+            // 배열을 가리키는 이름: 매개변수의 이름
+            console.log(items)
+        }
+
+        fn4(1,2,3,4);
+
+
+
+        function fn5(num1, num2, ...items){
+            console.log('num1 ', num1)
+            console.log('num2 ', num2)
+            console.log('items ', items)
+        }
+
+        console.log('---------------------');
+
+        fn5(1,2);
+        fn5(1,2,3);
+        fn5(1,2,3,4,5,6,7,8);
+        fn5();
+
+
+
+        function searchMax(...nums){
+            console.log(nums)       
+            
+            let maxNum = nums[0];
+
+            for(let i=1; i<nums.length; i++){
+                // 최대값과 인덱스에 저장된 값을 비교
+                // => 배열의 저장값이 더 크면 최대값에 대입
+                if (maxNum<nums[i]) {
+                    maxNum = nums[i]
+                }
+            }
+            
+            return maxNum;
+            
+        }
+
+        console.log('---------------------');
+
+        console.log(searchMax(1,40,13,83,48,11));
+
+
+        let arr1 = [1,3,7,9,14,16,23];
+        console.log(searchMax(arr1));       // 배열이 출력됨
+        console.log(searchMax(...arr1));    // 최대값 출력
+
+
+
+        // 두 수를 받아서 덧셈한 연산의 결과를 출력
+        function add(num1=0, num2=1){
+
+            // num1 = num1 || 0;   // num1 값이 없으면 0을 대입
+            // num2 = num2 || 1;
+
+            console.log('num1', num1);
+            console.log('num2', num2);
+
+            let result = num1+num2;
+            console.log('연산 결과', result);
+        }
+
+        add(10,20);
+        add(100);
+        add();      // NaN
+
+
+        
+        // 매개변수로 시급, 시간을 받아 급여를 계산하는 함수
+        function earnings(name, wage=15000, hours=40){
+            console.log(`${name}님의 급여 명세=========`)
+            console.log(`시급: ${wage}원`);
+            console.log(`근무시간: ${hours}시간`);
+            console.log(`급여 총액: ${wage*hours}원`);
+        }
+
+        earnings('KING', 20000, 80);
+        earnings('SCOTT', 5000);
+        earnings('SMITH');
+        
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

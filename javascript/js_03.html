@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        let arr = [12,32,34,54,75];
+
+        for(let item in arr){
+            console.log(arr[item]);
+        }
+
+        console.log('-----------------')
+
+        for(let item of arr){
+            console.log(item)
+        }
+
+        console.log('-----------------')
+
+        for(let i=0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        console.log('-----------------')
+
+        let i = 0;
+        while(i<arr.length){
+            console.log(arr[i++]);
+        }
+
+
+
+
+
+        // 배열의 요소 참조
+        console.log('arr[0]', arr[0]);
+        
+        // 배열의 사이즈
+        console.log('arr.length', arr.length);
+
+        // 마지막 index 데이터 추가: push()
+        arr.push(100);
+        console.log('arr.length', arr.length);
+        console.log('추가한 데이터', arr[arr.length-1]);
+        console.log(arr);
+
+        // 배열의 마지막 index 값 삭제
+        arr.pop();
+        console.log('마지막 요소 삭제');
+        console.log(arr);
+
+        // 배열의 특정 위치 요소 삭제: splice(시작 index, 제거 갯수)
+        arr.splice(2, 1);
+        console.log('2 index 요소 삭제');
+        console.log(arr);
+
+        // 특정 요소 값의 index 값을 반환: arr.indexOf(값)
+        console.log('값 2가 저장된 index', arr.indexOf(2));
+
+        // 특정 요소 값으로 삭제
+        arr.splice(arr.indexOf(4), 1);
+        console.log('요소 값 4 삭제');
+        console.log(arr);
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
