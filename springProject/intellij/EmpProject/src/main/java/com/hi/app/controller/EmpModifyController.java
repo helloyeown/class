@@ -33,7 +33,7 @@ public class EmpModifyController {
         EmpDTO emp = readService.readEmp(empno);
         model.addAttribute("emp", emp);
 
-        return "modify";
+        return "/emp/modify";
     }
 
     @PostMapping

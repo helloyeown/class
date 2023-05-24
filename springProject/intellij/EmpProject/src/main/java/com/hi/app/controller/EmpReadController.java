@@ -26,7 +26,7 @@ public class EmpReadController {
         EmpDTO emp = readService.readEmp(empno);
         model.addAttribute("emp", emp);
 
-        return "read";
+        return "/emp/read";
     }
 
 }

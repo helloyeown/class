@@ -23,7 +23,7 @@ public class EmpRegistController {
     @GetMapping
     public String getRegistForm(){
         log.info("get    /emp/regist");
-        return "regist";
+        return "/emp/regist";
     }
 
     @PostMapping

@@ -21,7 +21,10 @@
 <h1>사원 리스트</h1>
 <hr>
 
+${loginInfo}
+
 <table border="1">
+
 
     <tr>
         <th>사원번호</th>
@@ -49,6 +52,12 @@
 </table>
 
 <a href="/emp/regist">등록</a>
+<a href="/logout">로그아웃</a>
+
+<c:if test="${loginInfo eq null}">
+<a href="/login">로그인</a>
+<a href="/login/regist">회원가입</a>
+</c:if>
 
 </body>
 </html>
