@@ -10,3 +10,7 @@ CREATE TABLE `empmember` (
 
 
 select * from empmember;
+
+insert into empmember (uid, pw, uname) values ('moon', 1234, 'moon');
+
+select idx, uid, uname from empmember where uid='hot' and pw=1111;

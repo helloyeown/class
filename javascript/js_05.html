@@ -64,9 +64,11 @@
         
         // Array.map(callbackfn) => 
         // 콜백 함수에서 반환하는 값으로 새로운 배열을 생성해서 반환
-        let arr2 = arr1.map(function(num, index){
-            return num*10*index;
-        })
+        // let arr2 = arr1.map(function(num, index){
+        //     return num*10*index;
+        // })
+
+        let arr2 = arr1.map((num, index)=>num*10*index);
 
         console.log('map()=>', arr2)
 
@@ -74,11 +76,13 @@
         // Array.filter(callbackfn)
         // 콜백 함수의 반환 값 = 논리값
         // 반환된 논리값이 true인 요소값들만 모아서 새로운 배열 생성 후 반환
-        let arr3 = arr1.filter(function(value, index){
-            // 30보다 작은 값만 반환
-            // return value<30;
-            return index%2==1      // index가 홀수
-        })
+        // let arr3 = arr1.filter(function(value, index){
+        //     // 30보다 작은 값만 반환
+        //     // return value<30;
+        //     return index%2==1      // index가 홀수
+        // })
+
+        let arr3 = arr1.filter((val)=>val<30);
 
         console.log('filter()=>', arr3);
 
