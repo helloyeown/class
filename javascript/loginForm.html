@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        // 아이디, 비밀번호 체크
+        const regex = /^[a-z0-9]+$/;
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const loginForm = document.querySelector('form')
+
+            // form -> submit 이벤트 처리
+            loginForm.addEventListener('submit', (event)=>{
+                console.log('로그인 버튼 클릭: submit')
+
+                // form 안에 있는 input value 확인
+                const userid = document.querySelector('#userid')
+                const pw = document.querySelector('#pw')
+
+                console.log('userid', userid.value)
+                console.log('pw', pw.value)
+
+                if(userid.value.length<1){
+                    alert('아이디를 입력해주세요.')
+                    event.returnValue = false
+                }
+
+                // 아이디: 대문자/소문자/숫자 조합으로만 사용
+                console.log('check', /^[a-z, A-Z, 0-9]+$/.test('abcdAAA123'))   // 정규식 객체 생성, 테스트
+                console.log('check', /^[a-z, A-Z, 0-9]+$/.test('abcd!AAA123'))
+
+                
+                const result = regex.test('123AB')
+                console.log('result', result)
+
+                       
+                // 입력된 아이디의 값을 체크
+                if(!regex.test(userid.value)){
+                    alert('아이디는 소문자와 숫자의 조합으로 입력해주세요.')
+                    event.returnValue = false;
+                    return
+                }
+
+
+                if(pw.value.length<1){
+                    alert('비밀번호를 입력해주세요.')
+                    event.returnValue = false
+                }
+
+                event.preventDefault()
+            })
+        })
+    </script>
+
+</head>
+<body>
+
+    <h1>로그인</h1>
+    <form action="https://www.naver.com">
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="userid" id="userid"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="pw" id="pw"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="로그인">
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>

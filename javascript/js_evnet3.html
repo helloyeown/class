@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const select = document.querySelector('select') // tag casting
+            const msg = document.querySelector('#selectMsg')
+
+            // select 태그의 이벤트는 change를 사용
+            select.addEventListener('change', (event)=>{
+
+
+                const options = event.currentTarget.options
+                console.log(options)
+                const index = options.selectedIndex
+                console.log('selectedIndex', index)
+
+                let selectMsg = `select: ${options[index].textContent}`
+
+                if(options[index].value == 'java'){
+                    alert('자바')
+                }
+
+                msg.textContent = selectMsg
+            })
+
+            const checkedMsg = document.querySelector('#checkedMsg')
+            // 선택자: 타입 선택
+            const langs = document.querySelectorAll('input[name=lang]')
+
+            langs.forEach((radio)=>{
+                radio.addEventListener('change', (event)=>{
+                    const currRadio = event.currentTarget
+                    if(currRadio.checked){
+                        checkedMsg.textContent = `checked: ${currRadio}`
+                    }
+                })
+            })
+        })
+
+    </script>
+</head>
+<body>
+
+    <h3>관심있는 언어를 선택하세요</h3>
+    <input type="radio" name="lang" value="java"> JAVA <br>
+    <input type="radio" name="lang" value="sql"> SQL <br>
+    <input type="radio" name="lang" value="html"> HTML <br>
+    <input type="radio" name="lang" value="css"> CSS <br>
+    <input type="radio" name="lang" value="js"> JAVA SCRIPT <br>
+    <h3 id="checkedMsg"></h3>
+
+
+
+
+    <hr>
+
+    <select>
+        <option value="java">JAVA</option>
+        <option value="sql">SQL</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="js">JAVA SCRIPT</option>
+    </select>
+
+    <h3 id="selectMsg"></h3>
+    
+</body>
+</html>

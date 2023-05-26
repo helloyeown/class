@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        // 예외 처리
+        try {
+            // 예외 발생이 예상되는 블록
+            console.log('try 블록 진입')
+            // 강제 예외 발생
+            // throw new Error('강제 예외 발생')
+
+            console.log('예외가 발생하면 출력되지 않는다')
+
+        } catch (error) {
+            // 예외 처리 블록
+            console.log('예외 처리 블록 진입')
+
+            console.log('error.name', error.name)
+            console.log('error.message', error.message)
+
+        } finally {
+            // 예외 발생 여부와 상관 없이 실행
+            console.log('finally 블록 진입')
+
+        }
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

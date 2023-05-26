@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let memo
+        let cnt
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 글자 수 체크 : keyup
+            memo = document.querySelector('#memo')
+            cnt = document.querySelector('#cnt')
+
+            memo.addEventListener('keyup', memoListner)
+
+            // memo.addEventListener('keyup', () => {
+
+            //     console.log(memo.value)
+            //     let memoStr = memo.value
+            //     const len = memo.value.length
+
+            //     if(len > 20) {
+            //         alert('20자 이하로만 작성이 가능합니다.')
+            //         memo.value = memoStr.substring(0, 20)
+            //         len = 20
+            //     }
+
+            //     cnt.textContent = `글자 수 : ${len}`
+
+            // })
+
+        })
+
+        const memoListner = function(event){
+
+            // event.currentTarget 이벤트가 발생한 문서 객체
+            let memoObj = event.currentTarget
+
+            // console.log(memo.value)
+            console.log(memoObj.value)
+
+            // let memoStr = memo.value
+            let memoStr = memoObj.value
+
+            // const len = memo.value.length
+            const len = memoStr.length
+
+                if(len > 20) {
+                    alert('20자 이하로만 작성이 가능합니다.')
+                    // memo.value = memoStr.substring(0, 20)
+                    memoObj.value = memoStr.substring(0, 20)
+                    len = 20
+                }
+
+                cnt.textContent = `글자 수 : ${len}`
+        }
+
+    </script>
+</head>
+<body>
+    
+    <h1>키보드 이벤트</h1>
+    <textarea id="memo"></textarea>
+    <h4 id="cnt">글자 수 :</h4>
+
+
+</body>
+</html>

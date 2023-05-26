@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        #box {
+            margin: 0;
+            padding: 0;
+            width: 250px;
+            height: 150px;
+            border: 10px solid #AAA;
+            border-radius: 20px;
+            background-color: aqua;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 150px;
+            cursor: pointer;
+        }
+
+        #box:hover {
+            background-color: white;
+        }
+
+    </style>
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            let box = document.querySelector('#box')
+            // box -> click event 적용
+            box.addEventListener('click', ()=>{
+                alert('이벤트 표준 처리')
+            })
+        })
+
+
+
+        // window.onload = function(){
+        //     var box1 = document.getElementById('box');
+        //     box1.onclick = function(){
+        //         alert('고전 방식의 이벤트 연결')
+        //     }
+        // }
+
+    </script>
+
+</head>
+<body>
+    
+    <!-- <div id="box" onclick="alert('인라인 방식의 이벤트 처리')">CLICK</div> -->
+
+    <div id="box">CLICK</div>
+
+</body>
+</html>
