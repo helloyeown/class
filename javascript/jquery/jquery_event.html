@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <style>
+        h1, div {
+            border: 5px solid #AAA;
+            margin: 10px 0;     /*상하 좌우*/
+        }
+
+        .over {
+            background-color: aquamarine;
+            color: blue;
+        }
+    </style>
+
+    <script>
+        
+        $(document).ready(function(){
+
+            // h1 캐스팅 -> click 이벤트 연결
+            $('h1').on('click', function(){
+                // alert('h1 Click')
+                // this -> 이벤트가 발생한 엘리먼트 객체를 가리킨다
+                $(this).html(function(index, html){
+                    return html+'+'
+                })
+            })
+
+            $('h1').on({
+                mouseenter : function(){
+                    console.log('이벤트 영역으로 진입')
+                    $(this).addClass('over')
+                },
+                mouseleave : function(){
+                    console.log('이벤트 영역에서 벗어남')
+                    $(this).removeClass('over')
+                }
+            })
+
+
+            $('div').click(function(e){
+                // this -> 이벤트가 발생한 div
+                // $('h3', this) -> 이벤트가 발생한 div 블록 안에서 h3을 선택
+                let h3 = $('h3', this).text()
+                let p = $('p', this).text()
+
+                // alert(h3 + ' : ' + p)
+
+                console.log(e)
+            })
+
+            $('a').click(function(e){
+                alert('a tag click')
+
+                // 기본 이벤트 제거
+                e.preventDefault()
+            })
+
+            $('form').submit(function(e){
+                alert('form submit')
+
+                // e => 이벤트 객체 -> null
+                // e 변수가 false일 때
+                e = e || window.event
+
+                // 기본 속성을 제거: action 속성의 url로 전달하지 않음
+                // e.preventDefault()
+
+                let id = ''
+                
+                if(id.length<1){
+                    alert('아이디는 필수 항목입니다.')
+                    return false
+                }
+
+            })
+
+            // $('h2').click(function(){
+            //     let len = $('h2').length
+            //     let oldHtml = $(this).html()    // this=>이벤트가 발생한 h2
+
+            //     $('#wrap').append('<h2>'+len + '-' + oldHtml+'</h2>')
+            // })
+
+            $('#wrap').on('click', 'h2', function(){
+                let len = $('h2').length
+                let oldHtml = $(this).html()    // this=>이벤트가 발생한 h2
+
+                $('#wrap').append('<h2>'+len + '-' + oldHtml+'</h2>')
+            })
+
+        })
+
+    </script>
+
+</head>
+<body>
+
+    <div id="wrap">
+        <h2>header</h2>
+    </div>
+
+    <form action="https://www.naver.com">
+        <input type="submit">
+    </form>
+
+    <hr>
+
+    <a href="https://www.naver.com">네이버</a>
+
+    <hr>
+
+    <div>
+        <h3>header 1</h3>
+        <p>p1</p>
+    </div>
+
+    <div>
+        <h3>header 2</h3>
+        <p>p2</p>
+    </div>
+
+    <div>
+        <h3>header 3</h3>
+        <p>p3</p>
+    </div>
+
+    <h1>header-0</h1>
+    <h1>header-1</h1>
+    <h1>header-2</h1>
+    
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .title {
+            background-color: aquamarine;
+            color: blue;
+            font-style: italic;
+        }
+        .show {
+            font-size: 32px;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            // addClass(): 클래스 속성에 속성 값 추가
+            $('h2').addClass('title')
+            // removeClass(): 클래스의 속성 값을 삭제
+            $('h2').removeClass('show')
+
+            
+            /////////////////////////////////
+            // attr('속성 이름') => 속성 이름의 속성 값을 반환하는 getter
+            // 이미지의 경로
+            let srcPath = $('.img').attr('src')
+            console.log('이미지 경로', srcPath)    // 이미지 경로 ../img/캡처.PNG
+            // 속성 추가: setter
+            // $('.img').attr('width', 100)
+            // $('.img').attr('width', function(index){
+            //     return (index+1)*100
+            // })
+
+            $('.img').attr({
+                width: 100,
+                height: function(index){
+                    return (1+index)*200
+                }
+            })
+
+            let hrefURL = $('a').attr('href')
+            console.log('URL', hrefURL)
+
+            // 속성 삭제: removeAttr('속성이름')
+            $('.img').removeAttr('height')
+
+            $('a').removeAttr('href')
+
+
+            ////////////////////////////////
+            // css(): 스타일의 속성 컨트롤
+            // getter: css('스타일 속성 이름')
+            let h2Color = $('h2.title').css('color')
+            console.log('h2Color', h2Color)
+
+            // setter: css('스타일 속성 이름', 속성값)
+            $('h2').css('background', 'red')
+
+            // setter: css('스타일 속성 이름', 함수)
+            let colors = ['black', 'orange', 'yellow']
+            $('h2').css('background', function(index){
+                return colors[index]
+            })
+
+            // setter: css({스타일 속성 이름: 값, ...})
+            $('h2').css({
+                color: 'green',
+                backgroundColor: function(index){
+                    return colors[index]
+                },
+                fontSize: 'small'
+            })
+
+
+            /////////////////////////////////
+            // innerHtml: 문서 객체 내부의 html 
+            // => $().html(): getter/setter
+            let menu1_html = $('#menu1').html()
+            console.log('html():', menu1_html)  //<span>Menu Text1</span>
+
+            // setter
+            $('#menu1').html('<h1>TITLE</h1>')
+
+            // textContent: 문서 객체 내부의 text 
+            // => $().text(): getter/setter
+            let menu2_text = $('#menu2').text()
+            console.log('text():', menu2_text)  //Menu Text2
+            $('#menu2').text('<h1>TITLE</h1>')
+
+            $('div').html(function(index, html){
+                console.log(index, html)
+                $(this).html('<h1>'+html+index+'</h1>')
+            })
+
+
+            $('#btn1').click(function(event){
+                // alert('btn1 click')
+                $('#menu1').remove()
+            })
+
+            $('#btn2').click(function(event){
+                // alert('btn2 click')
+                $('#menu2').empty()
+                console.log('check', $('#menu1').html())
+            })
+
+            
+
+        })
+
+    </script>
+
+
+</head>
+<body>
+
+    <button id="btn1">menu1 삭제</button>
+    <button id="btn2">menu2 내용 삭제</button>
+
+    <div id="menu1">
+        <span>Menu Text1</span>
+    </div>
+    <div id="menu2">
+        <span>Menu Text2</span>
+    </div>
+    <div id="menu3">
+        <span>Menu Text3</span>
+    </div>
+
+    <hr>
+
+    <img class="img" src="../img/캡처.PNG">
+    <img class="img" src="../img/KakaoTalk_20230530_131624214.jpg">
+    <a href="https://www.naver.com">네이버</a>
+
+    <h2 class="show">Header2</h2>
+    <h2 class="show">Header2</h2>
+    <h2 class="show">Header2</h2>
+    
+    
+</body>
+</html>

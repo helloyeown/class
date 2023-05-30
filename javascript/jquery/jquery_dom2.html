@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .img {
+            width: 150px;
+            border: 5px solid #AAA;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            // 문서 객체 생성 => $('html 태그')
+            $('<h1></h1>').appendTo('body')
+            $('<h1></h1>').html('Hello').appendTo('body')
+            $('<h1>Hello Jquery</h1>').appendTo('body')
+
+            $('<h3>메뉴</h3>').appendTo('#wrap')
+
+            $('<img>').attr('src', '../img/캡처.PNG').attr('width', 100).appendTo('#wrap')
+            $('<img>').attr('src', '../img/캡처.PNG').addClass('img').appendTo('#wrap')
+
+            // target 캐스팅 -> 새로운 문서 객체 추가
+            // : (target).append(dom)
+            let html1 = '<a href="#">test</a>'
+            let html2 = '<p>TEST</p>'
+            // let html3 = '<div>DIV-0</div><div>DIV-1</div>'
+            $('body').append('<h3>안녕하세요</h3>')
+            $('body').append('<hr>', html1, '<hr>',  html2, '<hr>')
+
+            let links = [
+                {name: '네이버', url: 'https://www.naver.com'},
+                {name: '다음', url: 'https://www.daum.net'},
+                {name: '구글', url: 'https://www.google.com'},
+            ]
+
+            $('div').append(function(index){
+                return '<h3><a href="'+links[index].url+'">'+links[index].name+'</a></h3>'
+            })
+
+        })
+        
+
+    </script>
+</head>
+<body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <hr>
+
+    <div id="wrap"></div>
+    
+</body>
+</html>
