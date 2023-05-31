@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+<script>
+
+	$(document).ready(function(){
+		
+		$('#regForm').submit(function(){
+
+			let param1 = $(this).serialize()
+			// -> uid=cool&uname=COOL&age=20 (query string 반환)
+			$('#wrap').append('<h1>' + param1 + '</h1>')
+			
+			let param2 = $(this).serializeArray()
+			console.log(param2)		// 객체 배열 반환
+			
+			return false;
+		})
+		
+	
+	})
+	
+	
+</script>
+
+</head>
+<body>
+
+	<form id="regForm">
+	
+		아이디 <input type="text" id="uid" name="uid"> <br>
+		이름 <input type="text" id="uname" name="uname"> <br>
+		나이 <input type="number" id="age" name="age"> <br>
+		
+		<input type="submit">
+	
+	</form>
+	
+	
+	<div id="wrap"></div>
+
+</body>
+</html>

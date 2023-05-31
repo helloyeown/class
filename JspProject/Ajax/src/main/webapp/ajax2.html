@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"
+   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+   crossorigin="anonymous"></script>
+
+<script>
+   $(document).ready(function() {
+
+      $('#btn').click(function() {
+         // name
+         let name = $('#name').val()
+         // price
+         let price = $('#price').val()
+
+         // 비동기 통신
+         //   $.ajax(option)
+         $.ajax({
+            url : 'parameter.jsp',
+            type : 'GET', //GET POST PUT DELETE => 기본값 get
+            data : {
+               name : name,
+               price : price
+            //?name=tea&price=3000   
+            }, // 요청 페이지로 전달하는 파라미터
+            success : function(response) {
+
+               $('body').append("<h4>"+response+"</h4>")
+            }
+         })
+
+      })
+
+   })
+</script>
+
+</head>
+<body>
+
+   <h1>메뉴</h1>
+   <hr>
+   이름
+   <input type="text" id="name"> 가격
+   <input type="number" id="price">
+   <button id="btn">등록</button>
+   <hr>
+
+</body>
+</html>

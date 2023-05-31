@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+<script>
+
+	$(document).ready(function(){
+		
+		$('#uid').focusout(function(){
+			
+			/* alert('focusout') */
+			
+			$.ajax({
+				url: 'idcheck.jsp',
+				type: 'get',
+				data: { uid: $(this).val() },
+				success: function(data){
+					
+					/* alert(data) */
+					if(data=='Y'){
+						$('#chkMsg').html('사용 가능한 아이디입니다.')
+					} else {
+						$('#chkMsg').html('사용 불가한 아이디입니다.')
+					}
+					
+				}
+			})
+			
+		})
+	
+	})
+	
+	
+</script>
+
+</head>
+<body>
+
+	아이디 <input type="text" id="uid"> 
+	<span id="chkMsg"></span>
+
+</body>
+</html>

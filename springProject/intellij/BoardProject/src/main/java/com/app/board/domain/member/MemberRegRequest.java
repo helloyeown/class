@@ -1,4 +1,4 @@
-package com.app.board.domain;
+package com.app.board.domain.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,12 +10,12 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 @Data
 @ToString
-public class BoardRegRequest {
+public class MemberRegRequest {
 
-    private String title;
-    private String content;
-    private int memidx;
-    private MultipartFile file;
+    private String uid;
+    private String pw;
+    private String uname;
+    private MultipartFile uphoto;
     private String filename;
 
 }

@@ -35,6 +35,10 @@
         <td>${board.content}</td>
     </tr>
     <tr>
+        <td>첨부파일</td>
+        <td></td>
+    </tr>
+    <tr>
         <td>등록일</td>
         <td>${board.regdate}</td>
     </tr>

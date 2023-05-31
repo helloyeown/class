@@ -3,5 +3,12 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.board.mapper.MemberMapper">
 
+    <select id="selectByUidPw" resultType="com.app.board.domain.member.MemberDTO">
+        select idx, uid, uname, uphoto from member where uid=#{param1} and pw=#{param2}
+    </select>
+
+    <insert id="registMember" parameterType="com.app.board.domain.member.MemberRegRequest">
+        insert into member (uid, pw, uname, uphoto) values (#{uid}, #{pw}, #{uname}, #{filename})
+    </insert>
 
 </mapper>

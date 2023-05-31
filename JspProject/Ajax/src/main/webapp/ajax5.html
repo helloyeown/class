@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+<script>
+
+	$(document).ready(function(){
+		
+		$.getJSON('data.json', function(data){
+			console.log(data)
+			
+			$.each(data, function(index, item){
+				$('body').append('<h3>제품: ' + item.name + ', 가격: ' + item.price + '원</h3>')
+			})
+		})
+	
+	})
+	
+	
+</script>
+
+</head>
+<body>
+
+	<h1>메뉴</h1>
+	<hr>
+
+</body>
+</html>

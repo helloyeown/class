@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#memo').keyup(function(){
+
+                // 글자 수를 추출
+                let cnt = $(this).val().length
+                let remain = 150 - cnt
+
+                if(remain < 0) {
+
+                    alert('150자까지 작성 가능합니다.')
+                    let str = $(this).val().substr(0, 150)
+                    $(this).val(str)
+                    $('#cnt').text('150')
+                    
+                    return false
+                }
+
+                $('#cnt').text(cnt)
+
+            })
+
+            $('#allCheck').change(function(){
+                // $(this.checked)
+                console.log(this.checked)
+                if(this.checked){
+                    // 전체 checked true 상태로 변경
+                    $('#checkItem').children().prop('checked', true)
+                } else {
+                    // 전체 checked false 상태로 변경
+                    $('#checkItem').children().prop('checked', false)
+                }
+            })
+
+        })
+
+    </script>
+
+</head>
+<body>
+
+    <input type="checkbox" id="allCheck">
+    <label for="allCheck">전체동의</label>
+    <br>
+
+    <div id="checkItem">
+        <input type="checkbox"> a Type <br>
+        <input type="checkbox"> b Type <br>
+        <input type="checkbox"> c Type <br>
+    </div>
+
+    <hr>
+
+    <textarea id="memo" cols="50" rows="10"></textarea><br>
+    <span id="cnt">0</span>/150
+    
+</body>
+</html>

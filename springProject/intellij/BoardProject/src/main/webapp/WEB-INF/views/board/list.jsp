@@ -19,24 +19,31 @@
 <body>
 
 <h1>게시판</h1>
+${loginInfo}
 <hr>
+
 
 <table border="1">
     <tr>
         <th>글번호</th>
         <th>제목</th>
+        <th>작성자</th>
         <th>작성일</th>
     </tr>
     <c:forEach items="${list}" var="board">
         <tr>
             <td><a href="/board/read?bno=${board.bno}">${board.bno}</a></td>
             <td>${board.title}</td>
+            <td>${loginInfo.uname}</td>
             <td>${board.updatedate}</td>
         </tr>
     </c:forEach>
 </table>
 
 <a href="/board/regist">글쓰기</a>
+<a href="/login">로그인</a>
+<a href="/regist">회원가입</a>
+<a href="/logout">로그아웃</a>
 
 </body>
 </html>

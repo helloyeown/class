@@ -11,4 +11,8 @@
         select * from tbl_board where bno=#{bno}
     </select>
 
+    <insert id="insertBoard" parameterType="com.app.board.domain.BoardRegRequest">
+        insert into tbl_board (title, content, memidx, file) values (#{title}, #{content}, #{memidx}, #{filename})
+    </insert>
+
 </mapper>
