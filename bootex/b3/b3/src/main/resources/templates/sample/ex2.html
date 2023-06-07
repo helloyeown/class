@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <a th:href="@{/view(keyword = ${keyword})}">링크</a>
+    <!-- /view?keyword=%EB%8D%94%20%EA%B8%80%EB%A1%9C%EB%A6%AC -->
+    <!-- 자동으로 url을 인코딩 해줌 -->
+    
+</body>
+</html>
